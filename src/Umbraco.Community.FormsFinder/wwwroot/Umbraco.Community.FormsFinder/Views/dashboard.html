@@ -1,0 +1,108 @@
+<style>
+	hr {
+		margin: 5px 0;
+		border: 1px solid #d8d7d9;
+	}
+
+  .no-bullets {
+    list-style-type: none;
+  }
+
+  .header {
+    background-color: #1b264f;
+    color: #fff;
+  }
+
+	.form
+	{
+			align-content: start
+	}
+
+  li.page {
+    margin-bottom: 10px; /* Adjust the space as needed */
+  }
+</style>
+
+<div id="formsfinder-dashboard" class="formsfinder-dashboard" ng-controller="FormsFinderApiController as vm">
+  
+  <div class="umb-panel-group__details-group">
+    
+
+    <div class="umb-panel-group__details">
+      <div class="umb-panel-group__details">
+        <div class="umb-panel-group__details">
+          <div class="umb-panel-group__details-status-content">
+            <uui-table aria-label="Headers">
+              <uui-table-column style="width: 30%;"></uui-table-column>
+              <uui-table-column style="width: 40%;"></uui-table-column>
+              <uui-table-column style="width: 30%;"></uui-table-column>
+              <uui-table-head>
+                <uui-table-head-cell class="header"><localize key="FormsFinder_Forms">Forms</localize></uui-table-head-cell>
+                <uui-table-head-cell class="header">
+                  <localize style=" vertical-align: middle;" key="FormsFinder_ContentPages">Content</localize>
+                </uui-table-head-cell>
+                <uui-table-head-cell class="header">
+                  <input placeholder="Search formname" ng-on-keydown="vm.change(vm.currentPage, searchTerm)" style="float: right; vertical-align: middle; color: black;" type="text" ng-model="searchTerm" />
+                </uui-table-head-cell>
+              </uui-table-head>
+            </uui-table>
+
+            <uui-table aria-label="Forms Table">
+              <uui-loader-circle style="color: #006eff; font-size: 2em" ng-show="vm.loading === true"></uui-loader-circle>
+              <uui-table-column style="width: 30%;"></uui-table-column>
+              <uui-table-column style="width: 70%;"></uui-table-column>
+
+              <uui-table-row ng-repeat="entry in vm.data.forms">
+
+                <uui-table-cell class="form">
+                  <uui-icon style="font-size: 20px; color:black" name="icon-autofill"></uui-icon>
+                  <a ng-click="vm.openForm(entry.form.guid)">{{entry.form.name}}</a>
+                  <span></span>
+                  <uui-breadcrumbs>
+                    <uui-breadcrumb-item ng-repeat="pathItem in entry.form.path">{{pathItem}}</uui-breadcrumb-item>
+                  </uui-breadcrumbs>
+                </uui-table-cell>
+                <uui-table-cell>
+                  <ul class="no-bullets">
+                    <li class="page" ng-repeat="page in entry.pages">
+                      <uui-table aria-label="Pages">
+                        <uui-table-column style="width: 66%;"></uui-table-column>
+                        <uui-table-column style="width: 30%;"></uui-table-column>
+
+                        <uui-table-row>
+                          <uui-table-cell>
+                            <uui-icon style="font-size: 20px; color:green" name="document" ng-show="page.published === true && page.hasAccess === true"></uui-icon>
+                            <uui-icon style="font-size: 20px; color: lightgrey" name="document" ng-show="page.published === false && page.hasAccess === true"></uui-icon>
+                            <uui-icon style="font-size: 20px; color: red" name="icon-lock" ng-show="page.hasAccess === false"></uui-icon>
+                            <a ng-click="vm.openContent(page.contentId)" style="color: black" ng-show="page.published === true && page.hasAccess === true">{{ page.pageTitle }}</a>
+                            <a ng-click="vm.openContent(page.contentId)" style="color: grey" ng-show="page.published === false  && page.hasAccess === true">{{ page.pageTitle }}</a>
+                            <a style="color: red" ng-show="page.hasAccess === false">{{ page.pageTitle }}</a>
+                          </uui-table-cell>
+                          <uui-table-cell>
+                            <uui-tag style="margin-right:12px;" color="positive" ng-show="page.published === true" look="primary"><localize key="FormsFinderStatus_Published">Published</localize></uui-tag>
+                            <uui-tag style="margin-right:12px;" color="warning" ng-show="page.published === false" look="outline"><localize key="FormsFinderStatus_Unpublished">Unpublished</localize></uui-tag>
+                          </uui-table-cell>
+                        </uui-table-row>
+                      </uui-table>
+
+                    </li>
+                  </ul>
+                </uui-table-cell>
+              </uui-table-row>
+
+            </uui-table>
+            <div style="resize: horizontal; overflow: hidden; padding: 6px;">
+              <umb-pagination page-number="vm.data.paging.currentPage"
+                              total-pages="vm.data.paging.totalPages"
+                              on-next="vm.changePage"
+                              on-prev="vm.changePage"
+                              on-change="vm.changePage"
+                              on-go-to-page="vm.changePage">
+              </umb-pagination>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

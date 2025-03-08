@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<language alias="en" intName="English (UK)" localName="English (UK)" lcid="" culture="en-GB">
+    <area alias="Umbraco.Community.FormsFinder">
+      <key alias="FormsFinderDashboard">Forms Finder</key>
+    </area>
+  <area alias="FormsFinder">
+    <key alias="Title">Forms Finder</key>
+    <key alias="Forms">Forms</key>
+    <key alias="ContentPages">Content</key>
+  </area>
+  <area alias="FormsFinderStatus">
+    <key alias="Published">Published</key>
+    <key alias="Unpublished">Not published</key>
+  </area>
+</language>
