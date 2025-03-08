@@ -20,7 +20,7 @@ internal class FormFinderService(
     IFormAccessService formAccessService,
     IBackOfficeSecurity backOfficeSecurity) : IFormFinderService
 {
-    private const int ItemsPerPage = 10;
+    private const int ItemsPerPage = 25;
 
     public FormsUsage GetFormsUsageInformation(int currentPage, string? searchPhrase = null)
     {
@@ -40,7 +40,7 @@ internal class FormFinderService(
         if (!string.IsNullOrEmpty(searchPhrase))
         {
             results = results?
-                .Where(r => r.Form.Name.Contains(searchPhrase) || r.Pages.Select(p => p.PageTitle).Contains(searchPhrase))
+                .Where(r => r.Form.Name.Contains(searchPhrase, StringComparison.InvariantCultureIgnoreCase))
                 .ToList();
         }
 
