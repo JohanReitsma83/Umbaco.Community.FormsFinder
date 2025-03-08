@@ -2,19 +2,19 @@
   "$schema": "https://marketplace.umbraco.com/umbraco-marketplace-schema.json",
   "AuthorDetails": {
     "Name": "Johan Reitsma",
-    "ImageUrl": "https://avatars.githubusercontent.com/u/107849834?v=4"
+    "ImageUrl": "https://www.johanreitsma.com/media/v0glo1q0/johan-2.png"
   },
   "Category": "Editor Tools",
   "Description": "quickly locates forms across your content and shows where they`re used.",
   "LicenseTypes": [ "Free" ],
   "IssueTrackerUrl": "https://github.com/JohanReitsma83/Umbaco.Community.FormsFinder/issues",
   "PackageType": "Package",
-  "Tags": [],
+  "Tags": ["Forms", "Editors"],
   "Title": "Umbraco Forms Finder",
   "Screenshots": [
     {
       "ImageUrl": "https://github.com/JohanReitsma83/Umbaco.Community.FormsFinder/blob/master/docs/formsfinder.png?raw=true",
-      "Caption": "healtchecks dashboard"
+      "Caption": "Forms Finder dashboard"
     }
   ]
 }
