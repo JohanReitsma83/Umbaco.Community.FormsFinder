@@ -21,7 +21,7 @@ public static class UmbracoBuilderExtensions
     public static IUmbracoBuilder AddNotificationHandlers(this IUmbracoBuilder builder)
     {
         builder.AddNotificationHandler<ContentSavedNotification, ClearContenOnSaveMotification>();
-        builder.AddNotificationHandler<ContentDeletedNotification, ClearContenOnDeletetNotification>();
+        builder.AddNotificationHandler<ContentDeletedNotification, ClearContentOnDeleteNotification>();
 
         
         builder.AddNotificationHandler<FormSavedNotification, FormClearOnSavedNotification>();

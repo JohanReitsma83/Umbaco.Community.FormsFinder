@@ -4,7 +4,7 @@ using Umbraco.Cms.Core.Notifications;
 
 namespace Umbraco.Community.FormsFinder.Core.Notifications;
 
-public class ClearContenOnDeletetNotification(AppCaches appCaches) : INotificationHandler<ContentDeletedNotification>
+public class ClearContentOnDeleteNotification(AppCaches appCaches) : INotificationHandler<ContentDeletedNotification>
 {
 
     private readonly IAppPolicyCache _runtimeCache = appCaches.RuntimeCache;
